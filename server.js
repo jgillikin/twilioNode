@@ -51,13 +51,21 @@ res.end('It worked!');
 });
 
 
-var port = process.env.PORT || '3000';
-app.set("port", port);
+var port = process.env.PORT || '8080';
+//app.set("port", port);
 
-var server = http.createServer(app);
+//var server = http.createServer(app);
 
-server.listen(port, () => 
+
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 8080);
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
+
+var server = http.createServer(app).listen(app.get('port'), app.get('ip'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+
+/*server.listen(port, () => 
 
 console.log('API running on localhost')
 
-);
+); */

@@ -2,7 +2,7 @@
   "name": "twiliotest",
   "version": "1.0.0",
   "description": "",
-  "main": "send_sms.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.16.3",
     "body-parser": "^1.15.2",
